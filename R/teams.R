@@ -21,8 +21,11 @@ general_team_info = function(team_name, year){
   tables <- html_nodes(webpage, "table")
 
   # Convert each table to a data frame
-  tables_df <- tables %>% map(~ html_table(.))
+  tables_list <- tables %>% map(~ html_table(.))
+
+  # Give the list appropriate name
+  names(tables_list) = c("Team Stats and Rankings","Schedule & Game Results","Team Conversions")
 
   # Print the data frames
-  tables_df
+  tables_list
 }
